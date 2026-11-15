@@ -28,7 +28,7 @@
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 "Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+main{max-width:1560px;margin:0 auto;padding:20px 16px 48px}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 
 .tag{display:flex;align-items:center;gap:14px;background:var(--tag);color:var(--tag-ink);
@@ -66,6 +66,67 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .badge::before{width:8px;height:8px}
 [data-s="Working"]{--c:#2E9E5B}[data-s="For Repair"]{--c:#E0A100}[data-s="Defective"]{--c:#D64545}
 .sn{color:var(--muted);font-size:.85rem;overflow-wrap:anywhere}
+.tag #sync{font-size:.78rem;font-weight:400}
+.tag #sync::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--tag-ink);opacity:.4}
+.tag #sync[data-ok="1"]::before{background:#1F7A44;opacity:1}
+.drive{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 4px}
+.drive button,.drive a{flex:1 1 160px;display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:0 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-weight:600;text-decoration:none}
+.note{color:var(--muted);font-size:.8rem;margin:4px 0 8px}
+.locked .layout{display:none}
+#gate{max-width:480px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
+.layout section{margin-bottom:0}
+@media (max-width:900px){.layout{grid-template-columns:1fr}#addsec{order:-1}}
+.viewer .layout{grid-template-columns:1fr}
+.viewer #addsec,.viewer .ed,.viewer .xl .q button,.viewer #clear,.viewer #vwrap{display:none}
+.badge:disabled{opacity:1;cursor:default}
+.grid-wrap{overflow-x:hidden;overflow-y:auto;max-height:78vh;border:1px solid var(--line);border-radius:4px}
+.xl{border-collapse:collapse;table-layout:fixed;width:100%;font-size:.95rem}
+.xl th,.xl td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:middle;overflow-wrap:anywhere}
+.xl thead th{position:sticky;z-index:1;font-weight:600}
+.xl .letters th{top:0;height:22px;padding:0;text-align:center;font-weight:400;font-size:.75rem;background:var(--bg);color:var(--muted)}
+.xl .titles th{top:22px;background:var(--tag);color:var(--tag-ink)}
+.xl .rn,.xl .letters th:first-child,.xl .titles th:first-child{width:38px;text-align:center;background:var(--bg);color:var(--muted)}
+.xl .titles th:first-child{background:var(--tag);color:var(--tag-ink)}
+.xl tbody tr:nth-child(even) td:not(.rn){background:color-mix(in srgb,var(--bg) 55%,var(--surface))}
+.xl .nm{font-weight:600;overflow-wrap:anywhere}
+.xl .q{white-space:normal;text-align:center}
+.xl .sel{text-align:center;padding:4px}
+.xl input[type=checkbox]{width:18px;height:18px;min-height:0;cursor:pointer}
+.xl .q b{display:inline-block;min-width:26px;text-align:center}
+.xl .q button,.xl .x{width:26px;min-height:26px;padding:0;border-radius:4px;font-size:1rem}
+.xl .x{color:var(--danger)}
+.xl .pth{width:48px;height:48px;object-fit:cover;border-radius:3px;display:block}
+.xl td .badge{margin:0}
+.xl .u{margin-left:4px;color:var(--muted)}
+.xl .bx{font-weight:600;overflow-wrap:anywhere}
+.xl tbody tr.grp td{background:var(--bg)!important;border-top:2px solid var(--ink)}
+.xl .grp button.g{background:none;border:0;min-height:28px;padding:0 6px 0 0;font:inherit;font-weight:800;cursor:pointer;text-align:left;color:var(--ink)}
+.xl .grp .ren{float:right;min-height:26px;padding:0 10px;font-size:.8rem}
+[data-s="Not Tested"]{--c:#7A8AA0}
+.bulk{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0 10px;padding:10px;border:1.5px solid var(--ink);border-radius:8px;background:var(--bg)}
+.bulk[hidden]{display:none}
+.bulk input{flex:1 1 200px;width:auto}
+.bulk button{min-height:44px}
+.grp .gcb{margin-right:8px;vertical-align:middle}
+@media (max-width:760px){
+  .xl,.xl tbody,.xl tr,.xl td{display:block;width:100%}
+  .xl colgroup,.xl thead{display:none}
+  .xl{font-size:1rem}
+  .grid-wrap{border:0;max-height:none;overflow:visible}
+  .xl tbody tr{border:1px solid var(--line);border-radius:8px;margin:0 0 10px;overflow:hidden}
+  .xl tbody td{display:flex;gap:10px;align-items:center;border:0;border-bottom:1px solid var(--line);text-align:left!important}
+  .xl tbody td::before{content:attr(data-label);flex:0 0 108px;font-weight:600;color:var(--muted);font-size:.8rem}
+  .xl tbody td:empty{display:none}
+  .xl tbody tr.grp td{display:block}
+  .xl tbody tr.grp td::before{content:none}
+}
+.codebar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:-8px 0 16px;font-size:.9rem}
+.codebar[hidden]{display:none}
+.codebar b{font-size:1.05rem;letter-spacing:.08em}
+.codebar button{min-height:36px;padding:0 12px}
+#gcode{text-transform:uppercase;letter-spacing:.08em}
+.wide{width:100%;margin-top:10px}
 .head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
 .head h2{margin:0}
 .sum{color:var(--muted);font-size:.9rem;margin:0 0 8px}
@@ -91,24 +152,72 @@ li .meta{color:var(--muted);font-size:.8rem}
 <main>
   <div class="tag">
     <span class="hole" aria-hidden="true"></span>
-    <div><h1>Asset tagger</h1><p id="count">0 items logged</p></div>
+    <div><h1>Asset tagger</h1><p id="count">0 items logged</p><p id="sync" data-ok="0">Connecting…</p></div>
   </div>
 
-  <section aria-labelledby="addh">
+  <div class="codebar" id="codebar" hidden>
+    <span id="rolelbl">Editor code</span><b id="codeshow"></b>
+    <button type="button" id="ccopy">Copy</button>
+    <span id="vwrap">· Viewer code <b id="vshow"></b>
+      <button type="button" id="vcopy">Copy</button>
+      <button type="button" id="vnew">Create viewer code</button></span>
+    <button type="button" id="cswitch">Switch</button>
+  </div>
+
+  <section id="gate" aria-labelledby="gh" hidden>
+    <h2 id="gh">Connect this device</h2>
+    <div id="urlrow" hidden>
+      <label class="lbl" for="gurl">Web app URL (from Google Apps Script)</label>
+      <input type="text" id="gurl" autocomplete="off" placeholder="https://script.google.com/macros/s/…/exec">
+      <p class="note">Tip: paste this URL into index.html (API_URL) once, and your devices will only ask for the code.</p>
+    </div>
+    <label class="lbl" for="gcode">Access code</label>
+    <input type="text" id="gcode" autocomplete="off" autocapitalize="characters" placeholder="e.g. K7M2P-9QXW4">
+    <button type="button" class="primary" id="gcon">Connect</button>
+    <button type="button" class="wide" id="gnew">Create a new access code</button>
+    <button type="button" class="link wide" id="gskip" hidden>Use on this device only</button>
+    <p class="note" id="gmsg" role="status"></p>
+  </section>
+
+<div class="layout">
+  <section id="sheet" aria-labelledby="listh">
+    <div class="head">
+      <h2 id="listh">Asset list</h2>
+      <button type="button" class="alt" id="export" disabled>Download Excel</button>
+    </div>
+    <p class="sum" id="sum"></p>
+    <div class="bulk ed" id="bulk" hidden>
+      <b id="bcount">0 selected</b>
+      <input type="text" id="bbox" list="boxes" autocomplete="off" placeholder="Move to box (pick one or type a new name)">
+      <button type="button" class="alt" id="bmove">Move to box</button>
+      <button type="button" id="bclear">Clear selection</button>
+    </div>
+    <div class="grid-wrap">
+      <table class="xl">
+        <colgroup><col class="ed" style="width:3%"><col style="width:4%"><col style="width:13%"><col style="width:20%"><col style="width:12%"><col style="width:13%"><col style="width:11%"><col style="width:11%"><col style="width:8%"><col class="ed" style="width:5%"></colgroup>
+        <thead>
+          <tr class="letters"><th class="ed"></th><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th class="ed"></th></tr>
+          <tr class="titles"><th class="ed"><input type="checkbox" id="selall" aria-label="Select all items"></th><th>#</th><th>Container / Box</th><th>Particulars / Name</th><th>Quantity</th><th>Serial number</th><th>Status</th><th>Location</th><th>Photo</th><th class="ed"></th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="empty" id="empty">No assets yet.</p>
+    <div class="drive">
+      <a href="https://drive.google.com/drive/folders/1Ux7_hfTVtCh76uShHXf4-wIFu6kYUP4u?usp=sharing" target="_blank" rel="noopener">Open Google Drive photo folder</a>
+    </div>
+    <button type="button" class="link" id="clear" hidden>Clear all assets</button>
+  </section>
+
+  <section id="addsec" aria-labelledby="addh">
     <h2 id="addh">Add an asset</h2>
 
-    <label class="lbl" for="name">Asset tag or name</label>
+    <label class="lbl" for="name">Particulars / name</label>
     <input type="text" id="name" autocomplete="off" placeholder="e.g. AT-0142 or Dell monitor">
 
-    <label class="lbl" for="serial">Serial number / model <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
-    <input type="text" id="serial" autocomplete="off" placeholder="e.g. SN 4821-AX or TP-Link ER605">
-
-    <label class="lbl" id="stl">Status</label>
-    <div class="chips" role="group" aria-labelledby="stl">
-      <button type="button" class="chip" data-s="Working" aria-pressed="true">Working</button>
-      <button type="button" class="chip" data-s="For Repair" aria-pressed="false">For Repair</button>
-      <button type="button" class="chip" data-s="Defective" aria-pressed="false">Defective</button>
-    </div>
+    <label class="lbl" for="box">Container / box <span style="font-weight:400;color:var(--muted)">(optional, kept between entries)</span></label>
+    <input type="text" id="box" list="boxes" autocomplete="off" placeholder="e.g. Box 1, U-Box, Container A">
+    <datalist id="boxes"></datalist>
 
     <label class="lbl" for="qty">Quantity</label>
     <div class="qty">
@@ -116,6 +225,24 @@ li .meta{color:var(--muted);font-size:.8rem}
       <input type="number" id="qty" value="1" min="1" step="1" inputmode="numeric">
       <button type="button" class="sq" id="plus" aria-label="Increase quantity">+</button>
     </div>
+
+    <label class="lbl" for="unit">Unit <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+    <input type="text" id="unit" list="units" autocomplete="off" placeholder="e.g. lot, set (leave blank for none)">
+    <datalist id="units"><option value="lot"><option value="set"><option value="unit"><option value="pair"><option value="roll"><option value="meter"></datalist>
+
+    <label class="lbl" for="serial">Serial number <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+    <input type="text" id="serial" autocomplete="off" placeholder="e.g. SN 4821-AX">
+
+    <label class="lbl" id="stl">Status</label>
+    <div class="chips" role="group" aria-labelledby="stl">
+      <button type="button" class="chip" data-s="Working" aria-pressed="true">Working</button>
+      <button type="button" class="chip" data-s="For Repair" aria-pressed="false">For Repair</button>
+      <button type="button" class="chip" data-s="Defective" aria-pressed="false">Defective</button>
+      <button type="button" class="chip" data-s="Not Tested" aria-pressed="false">Not Tested</button>
+    </div>
+
+    <label class="lbl" for="loc">Location <span style="font-weight:400;color:var(--muted)">(optional, kept between entries)</span></label>
+    <input type="text" id="loc" autocomplete="off" placeholder="e.g. Server room, 2nd floor">
 
     <label class="lbl">Photo</label>
     <div class="photo-actions">
@@ -132,35 +259,121 @@ li .meta{color:var(--muted);font-size:.8rem}
     <button type="button" class="primary" id="add">Add asset</button>
   </section>
 
-  <section aria-labelledby="listh">
-    <div class="head">
-      <h2 id="listh">Asset list</h2>
-      <button type="button" class="alt" id="export" disabled>Download Excel</button>
-    </div>
-    <p class="sum" id="sum"></p>
-    <ul id="list"></ul>
-    <p class="empty" id="empty">No assets yet. Add the first one above.</p>
-    <button type="button" class="link" id="clear" hidden>Clear all assets</button>
-  </section>
+</div>
 </main>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+/* ===== SETUP: paste your Google Apps Script web app URL between the quotes (see Code.gs) ===== */
+const API_URL = '';   // <-- PASTE YOUR WEB APP URL HERE, between the quotes
+const apiUrl = () => API_URL || ls.get('url') || '';
+const DRIVE_URL = 'https://drive.google.com/drive/folders/1Ux7_hfTVtCh76uShHXf4-wIFu6kYUP4u';
+
 const $ = s => document.querySelector(s);
-let items = [], photo = null, tt, status = 'Working';
-const ORDER = ['Working', 'For Repair', 'Defective'];
+const ORDER = ['Working', 'For Repair', 'Defective', 'Not Tested'];
+const ls = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+};
+let items = [], photo = null, tt, status = 'Working', pending = 0;
+let role = ls.get('role') === 'view' ? 'view' : 'edit';
+const ro = () => role === 'view';
+try { items = JSON.parse(ls.get('assets') || '[]'); } catch (e) { items = []; }
+const sid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 
-try { items = JSON.parse(localStorage.getItem('assets') || '[]'); } catch (e) { items = []; }
-
-function toast(msg) {
+function toast(msg, ms) {
   const t = $('#toast'); t.textContent = msg; t.classList.add('on');
-  clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 3200);
+  clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), ms || 3200);
 }
-function persist() {
-  try { localStorage.setItem('assets', JSON.stringify(items)); }
-  catch (e) { toast('Storage is full. Download your list, then clear it.'); }
+function setSync(t, ok) { const s = $('#sync'); s.textContent = t; s.dataset.ok = ok ? '1' : '0'; }
+function cache() {
+  if (!ls.set('assets', JSON.stringify(items, (k, v) => k === '_full' ? undefined : v))) toast('Device storage is full.');
 }
 
+/* ---------- server calls (Google Apps Script) ---------- */
+async function api(action, data, c) {
+  const r = await fetch(apiUrl(), { method: 'POST', body: JSON.stringify({ ...data, action, code: c == null ? (ls.get('code') || '') : c }) });
+  const j = await r.json();
+  if (j.error === 'auth') { lockOut('That access code isn’t recognised.'); throw new Error('Access code needed'); }
+  if (j.error === 'unknown action') throw new Error('Your Google script is out of date. In Apps Script paste the new Code.gs, then Deploy > Manage deployments > pencil > New version > Deploy.');
+  if (j.error) throw new Error(j.error);
+  return j;
+}
+function updateBar() {
+  const c = ls.get('code') || '', v = ls.get('vcode') || '';
+  $('#codebar').hidden = !c; $('#codeshow').textContent = c;
+  $('#rolelbl').textContent = ro() ? 'Viewer mode (read-only) · code' : 'Editor code';
+  $('#vshow').textContent = v; $('#vcopy').hidden = !v; $('#vnew').hidden = !!v;
+}
+function setRole(j) {
+  role = j.role === 'view' ? 'view' : 'edit';
+  ls.set('role', role); ls.set('vcode', j.viewCode || '');
+  document.body.classList.toggle('viewer', ro()); updateBar();
+}
+let poll;
+function lockOut(msg) {
+  ls.set('code', ''); ls.set('vcode', ''); role = 'edit'; ls.set('role', 'edit'); document.body.classList.remove('viewer'); clearInterval(poll);
+  document.body.classList.add('locked');
+  $('#gate').hidden = false; $('#codebar').hidden = true;
+  $('#urlrow').hidden = !!API_URL; $('#gskip').hidden = !!API_URL;
+  $('#gmsg').textContent = msg || ''; setSync('Not connected', false);
+}
+function unlock() {
+  document.body.classList.remove('locked'); $('#gate').hidden = true;
+  document.body.classList.toggle('viewer', ro()); updateBar();
+  render();
+}
+function start() { clearInterval(poll); poll = setInterval(pull, 30000); }
+async function connect(isNew) {
+  const url = API_URL || $('#gurl').value.trim() || ls.get('url') || '';
+  if (!url) { $('#gmsg').textContent = 'Paste your web app URL first.'; return; }
+  if (!API_URL) ls.set('url', url);
+  let c = $('#gcode').value.trim().toUpperCase();
+  if (!isNew && !c) { $('#gmsg').textContent = 'Enter your access code.'; return; }
+  $('#gmsg').textContent = 'Connecting…';
+  try {
+    if (isNew) c = (await api('create', {}, '')).code;
+    const j = await api('list', {}, c);
+    ls.set('code', c); items = j.items; setRole(j); cache(); unlock(); setSync('Synced', true); start();
+    if (isNew) { toast('Your access code is ' + c + '. Enter it on your other devices.'); }
+  } catch (e) { if (e.message !== 'Access code needed') $('#gmsg').textContent = e instanceof TypeError ? 'Couldn’t reach your Google script. Check that the web app URL ends in /exec and that access is set to Anyone, then redeploy.' : 'Couldn’t connect: ' + e.message; }
+}
+function payload(it) { const { _full, unsynced, ...rest } = it; return { item: { ...rest, photo: _full || rest.thumb || null } }; }
+
+async function sync(action, data, onFail) {
+  cache(); render();
+  if (!apiUrl() || !ls.get('code')) return null;
+  pending++;
+  try { const j = await api(action, data); setSync('Synced', true); return j; }
+  catch (e) { toast('Not synced: ' + e.message); setSync('Sync problem, saved on this device', false); if (onFail) onFail(); return null; }
+  finally { pending--; }
+}
+async function pull() {
+  if (!apiUrl() || !ls.get('code') || pending) return;
+  pending++;
+  try {
+    const j = await api('list');
+    const un = items.filter(i => i.unsynced);
+    setRole(j); items = j.items.concat(un);
+    cache(); render();
+    setSync('Synced ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), true);
+    for (const it of un) {
+      try { const r = await api('add', payload(it)); it.photoUrl = r.photoUrl; delete it.unsynced; } catch (e) { break; }
+    }
+    if (un.length) cache();
+  } catch (e) {
+    if (e.message !== 'Access code needed') setSync('Offline, showing the last saved list', false);
+  } finally { pending--; }
+}
+
+/* ---------- photos ---------- */
+function scale(img, max, q) {
+  const k = Math.min(1, max / Math.max(img.width, img.height));
+  const c = document.createElement('canvas');
+  c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+  return c.toDataURL('image/jpeg', q);
+}
 function readPhoto(file) {
   return new Promise((resolve, reject) => {
     const fr = new FileReader();
@@ -168,19 +381,15 @@ function readPhoto(file) {
     fr.onload = () => {
       const img = new Image();
       img.onerror = reject;
-      img.onload = () => {
-        const k = Math.min(1, 800 / Math.max(img.width, img.height));
-        const c = document.createElement('canvas');
-        c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
-        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-        resolve(c.toDataURL('image/jpeg', 0.8));
-      };
+      img.onload = () => resolve({ full: scale(img, 2048, 0.85), thumb: scale(img, 240, 0.65) });
       img.src = fr.result;
     };
     fr.readAsDataURL(file);
   });
 }
-
+function imgSize(src) {
+  return new Promise(res => { const i = new Image(); i.onload = () => res([i.width, i.height]); i.onerror = () => res([1, 1]); i.src = src; });
+}
 async function pick(e) {
   const f = e.target.files[0]; e.target.value = '';
   if (!f) return;
@@ -189,68 +398,157 @@ async function pick(e) {
 }
 function showPreview() {
   $('#preview').hidden = !photo;
-  if (photo) $('#pimg').src = photo;
+  if (photo) $('#pimg').src = photo.thumb;
 }
 
+/* ---------- list actions ---------- */
 function qtyVal() { return Math.max(1, parseInt($('#qty').value, 10) || 1); }
 function setStatus(s) {
   status = s;
   document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.s === s));
 }
-
-function addItem() {
+async function addItem() {
+  if (ro()) return;
   const name = $('#name').value.trim();
-  if (!name) { toast('Enter an asset tag or name first.'); $('#name').focus(); return; }
-  items.push({ id: Date.now() + Math.random(), name, serial: $('#serial').value.trim(), status, qty: qtyVal(), photo, ts: Date.now() });
-  persist();
-  $('#name').value = ''; $('#serial').value = ''; $('#qty').value = 1; photo = null; showPreview(); setStatus('Working');
-  render(); $('#name').focus(); toast('Added “' + name + '”.');
+  if (!name) { toast('Enter the particulars or name first.'); $('#name').focus(); return; }
+  const it = { id: sid(), name, serial: $('#serial').value.trim(), status, location: $('#loc').value.trim(), container: canonBox($('#box').value), unit: $('#unit').value.trim(), qty: qtyVal(), thumb: photo ? photo.thumb : null, ts: Date.now() };
+  if (photo) it._full = photo.full;
+  items.push(it);
+  $('#name').value = ''; $('#serial').value = ''; $('#qty').value = 1; $('#unit').value = ''; photo = null; showPreview(); setStatus('Working');
+  $('#name').focus(); toast('Added “' + name + '”.');
+  const j = await sync('add', payload(it), () => { it.unsynced = true; cache(); });
+  if (j) { it.photoUrl = j.photoUrl; delete it._full; cache(); }
 }
+function patch(it, f) { if (ro()) return; Object.assign(it, f); sync('update', { id: it.id, fields: f }); }
+function remove(it) { if (ro()) return; items = items.filter(x => x.id !== it.id); sync('remove', { id: it.id }); }
 
-function render() {
-  const ul = $('#list'); ul.textContent = '';
+const collapsed = new Set(), selected = new Set();
+function canonBox(v) {
+  const t = String(v || '').trim().replace(/\s+/g, ' ');
+  const ex = items.find(i => i.container && i.container.toLowerCase() === t.toLowerCase());
+  return ex ? ex.container : t;
+}
+function moveItems(list, v) {
+  if (ro() || !list.length) return;
+  const c = canonBox(v);
+  list.forEach(it => { it.container = c; });
+  sync('move', { ids: list.map(i => i.id), container: c });
+}
+function updateBulk() {
+  const n = selected.size, sa = $('#selall');
+  $('#bulk').hidden = n === 0; $('#bcount').textContent = n + ' selected';
+  sa.checked = items.length > 0 && n === items.length; sa.indeterminate = n > 0 && n < items.length;
+}
+const unitOf = it => /^pcs?$/i.test((it.unit || '').trim()) ? '' : (it.unit || '').trim();
+function totalsText(list) {
+  const t = {};
+  list.forEach(i => { const u = unitOf(i); t[u] = (t[u] || 0) + i.qty; });
+  return Object.entries(t).map(([u, n]) => n + ' ' + (u || 'units')).join(', ');
+}
+function groups() {
+  const map = new Map();
   items.forEach(it => {
-    const li = document.createElement('li');
+    const name = (it.container || '').trim(), k = name.toLowerCase();
+    if (!map.has(k)) map.set(k, { name, items: [] });
+    map.get(k).items.push(it);
+  });
+  const nat = (a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+  const out = [...map.values()].sort((a, b) => (a.name ? 0 : 1) - (b.name ? 0 : 1) || nat(a.name, b.name));
+  out.forEach(g => g.items.sort((a, b) => a.ts - b.ts));
+  return out;
+}
+function refreshBoxes() {
+  const dl = $('#boxes'); dl.textContent = '';
+  [...new Set(items.map(i => i.container).filter(Boolean))].forEach(b => { const o = document.createElement('option'); o.value = b; dl.append(o); });
+}
+function el(t, c, x) { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+function render() {
+  const tb = $('#rows'); tb.textContent = '';
+  [...selected].forEach(id => { if (!items.some(i => i.id === id)) selected.delete(id); });
+  const gs = groups(), showHdr = gs.some(g => g.name);
+  refreshBoxes();
+  const addRow = (it, i) => {
+    const tr = document.createElement('tr');
+    const sc = el('td', 'ed sel'), cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = selected.has(it.id); cb.setAttribute('aria-label', 'Select ' + it.name);
+    cb.onchange = () => { if (cb.checked) selected.add(it.id); else selected.delete(it.id); updateBulk(); };
+    sc.append(cb); tr.append(sc);
+    tr.append(el('td', 'rn', i));
+    tr.append(el('td', 'bx', it.container || ''));
+    const nm = el('td', 'nm', it.name); nm.title = 'Added ' + new Date(it.ts).toLocaleString();
+    if (it.unsynced) nm.append(el('div', 'sn', 'not synced yet'));
+    tr.append(nm);
 
-    const ph = document.createElement('div'); ph.className = 'ph';
-    if (it.photo) { const im = document.createElement('img'); im.src = it.photo; im.alt = 'Photo of ' + it.name; ph.appendChild(im); }
-    else ph.textContent = 'No photo';
+    const q = el('td', 'q');
+    const m = el('button', '', '−'), p = el('button', '', '+');
+    m.type = p.type = 'button';
+    m.setAttribute('aria-label', 'Decrease quantity of ' + it.name);
+    p.setAttribute('aria-label', 'Increase quantity of ' + it.name);
+    m.onclick = () => { if (it.qty > 1) patch(it, { qty: it.qty - 1 }); };
+    p.onclick = () => patch(it, { qty: it.qty + 1 });
+    q.append(m, el('b', '', it.qty), p, el('span', 'u', unitOf(it))); tr.append(q);
 
-    const info = document.createElement('div');
-    const nm = document.createElement('div'); nm.className = 'nm'; nm.textContent = it.name;
-    const meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = new Date(it.ts).toLocaleString();
-    info.append(nm);
-    if (it.serial) { const sn = document.createElement('div'); sn.className = 'sn'; sn.textContent = 'Serial / model: ' + it.serial; info.append(sn); }
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'badge';
-    if (it.status) b.dataset.s = it.status;
-    b.textContent = it.status || 'Set status';
-    b.setAttribute('aria-label', 'Status of ' + it.name + ': ' + (it.status || 'not set') + '. Tap to change.');
-    b.onclick = () => { it.status = ORDER[(ORDER.indexOf(it.status) + 1) % ORDER.length]; persist(); render(); };
-    info.append(b, meta);
+    tr.append(el('td', '', it.serial || ''));
+    const st = el('td');
+    if (it.status || !ro()) {
+      const b = el('button', 'badge', it.status || 'Set status'); b.type = 'button'; b.disabled = ro();
+      if (it.status) b.dataset.s = it.status;
+      b.setAttribute('aria-label', 'Status of ' + it.name + ': ' + (it.status || 'not set') + (ro() ? '' : '. Tap to change.'));
+      b.onclick = () => patch(it, { status: ORDER[(ORDER.indexOf(it.status) + 1) % ORDER.length] });
+      st.append(b);
+    }
+    tr.append(st, el('td', '', it.location || ''));
 
-    const step = document.createElement('div'); step.className = 'step';
-    const m = document.createElement('button'); m.type = 'button'; m.textContent = '−'; m.setAttribute('aria-label', 'Decrease quantity of ' + it.name);
-    const q = document.createElement('b'); q.textContent = it.qty;
-    const p = document.createElement('button'); p.type = 'button'; p.textContent = '+'; p.setAttribute('aria-label', 'Increase quantity of ' + it.name);
-    m.onclick = () => { if (it.qty > 1) { it.qty--; persist(); render(); } };
-    p.onclick = () => { it.qty++; persist(); render(); };
-    step.append(m, q, p);
+    const ph = el('td');
+    if (it.thumb) {
+      const im = el('img', 'pth'); im.src = it.thumb; im.alt = 'Photo of ' + it.name;
+      if (it.photoUrl) {
+        const a = el('a'); a.href = it.photoUrl; a.target = '_blank'; a.rel = 'noopener';
+        a.title = 'Open full-size photo in Google Drive'; a.append(im); ph.append(a);
+      } else ph.append(im);
+    }
+    tr.append(ph);
 
-    const del = document.createElement('button'); del.type = 'button'; del.className = 'link del'; del.textContent = 'Delete';
-    del.setAttribute('aria-label', 'Delete ' + it.name);
-    del.onclick = () => { items = items.filter(x => x.id !== it.id); persist(); render(); };
-
-    li.append(ph, info, step, del);
-    ul.appendChild(li);
+    const ed = el('td', 'ed'), d = el('button', 'x', '✕'); d.type = 'button';
+    d.setAttribute('aria-label', 'Delete ' + it.name); d.onclick = () => remove(it);
+    ed.append(d); tr.append(ed);
+    const L = ['Select', '#', 'Container / Box', 'Particulars / Name', 'Quantity', 'Serial number', 'Status', 'Location', 'Photo', ''];
+    [...tr.children].forEach((c, k) => { c.dataset.label = L[k] || ''; });
+    tb.append(tr);
+  };
+  let n = 0;
+  gs.forEach(g => {
+    const key = g.name.toLowerCase();
+    if (showHdr) {
+      const tr = el('tr', 'grp'), td = el('td', 'gh'); td.colSpan = 10;
+      const gb = el('button', 'g', (collapsed.has(key) ? '▸ ' : '▾ ') + (g.name || 'No container') + ' · ' + totalsText(g.items) + ' (' + g.items.length + (g.items.length === 1 ? ' line)' : ' lines)'));
+      gb.type = 'button'; gb.setAttribute('aria-expanded', String(!collapsed.has(key)));
+      gb.onclick = () => { if (collapsed.has(key)) collapsed.delete(key); else collapsed.add(key); render(); };
+      const rn = el('button', 'ren ed', g.name ? 'Rename box' : 'Assign to a box'); rn.type = 'button';
+      rn.onclick = () => {
+        const v = prompt(g.name ? 'Rename this box to:' : 'Put these items in box:', g.name);
+        if (v === null) return;
+        const nv = v.trim().replace(/\s+/g, ' ');
+        moveItems(g.items.slice(), nv);
+      };
+      const gcb = document.createElement('input');
+      gcb.type = 'checkbox'; gcb.className = 'ed gcb'; gcb.checked = g.items.every(it => selected.has(it.id));
+      gcb.setAttribute('aria-label', 'Select all in ' + (g.name || 'No container'));
+      gcb.onchange = () => { g.items.forEach(it => { if (gcb.checked) selected.add(it.id); else selected.delete(it.id); }); render(); };
+      td.append(gcb, gb, rn); tr.append(td); tb.append(tr);
+    }
+    if (!collapsed.has(key)) g.items.forEach(it => addRow(it, ++n));
   });
   const total = items.reduce((s, i) => s + i.qty, 0);
   $('#count').textContent = items.length + (items.length === 1 ? ' item logged' : ' items logged');
-  $('#sum').textContent = items.length ? total + ' units across ' + items.length + (items.length === 1 ? ' line' : ' lines') : '';
+  $('#sum').textContent = items.length ? totalsText(items) + ' across ' + items.length + (items.length === 1 ? ' line' : ' lines') : '';
   $('#empty').hidden = items.length > 0;
   $('#export').disabled = !items.length;
   $('#clear').hidden = !items.length;
+  updateBulk();
 }
 
+/* ---------- Excel export ---------- */
 async function exportXlsx() {
   if (!items.length) return;
   const btn = $('#export'); btn.disabled = true;
@@ -258,50 +556,41 @@ async function exportXlsx() {
     const wb = new ExcelJS.Workbook();
     const ws = wb.addWorksheet('Assets');
     ws.columns = [
-      { header: 'No.', key: 'n', width: 6 },
-      { header: 'Asset tag / name', key: 'name', width: 32 },
-      { header: 'Serial / model', key: 'sn', width: 24 },
+      { header: 'Container / Box', key: 'box', width: 20 },
+      { header: 'Particulars / Name', key: 'name', width: 32 },
+      { header: 'Quantity', key: 'q', width: 10 },
+      { header: 'Unit', key: 'u', width: 8 },
+      { header: 'Serial number', key: 'sn', width: 24 },
       { header: 'Status', key: 's', width: 13 },
-      { header: 'Quantity', key: 'q', width: 11 },
-      { header: 'Photo', key: 'p', width: 16 },
-      { header: 'Added', key: 'd', width: 20 }
+      { header: 'Location', key: 'loc', width: 24 },
+      { header: 'Photo (Google Drive link)', key: 'p', width: 55 }
     ];
     ws.getRow(1).font = { bold: true };
-    items.forEach((it, i) => {
-      const r = ws.addRow({ n: i + 1, name: String(it.name), sn: String(it.serial || ''), s: it.status || '', q: it.qty, d: new Date(it.ts).toLocaleString() });
-      r.alignment = { vertical: 'middle', wrapText: true };
-      const fills = { 'Working': 'FFC8E6C9', 'For Repair': 'FFFFE08A', 'Defective': 'FFF5B7B1' };
+    ws.views = [{ state: 'frozen', ySplit: 1 }];
+    const fills = { 'Working': 'FFC8E6C9', 'For Repair': 'FFFFE08A', 'Defective': 'FFF5B7B1', 'Not Tested': 'FFD9DEE3' };
+    for (const g of groups()) for (const it of g.items) {
+      const r = ws.addRow({ box: g.name, name: String(it.name), q: it.qty, u: unitOf(it), sn: String(it.serial || ''), s: it.status || '', loc: String(it.location || '') });
+      r.alignment = { vertical: 'middle' };
       if (fills[it.status]) r.getCell('s').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: fills[it.status] } };
-      if (it.photo) {
-        r.height = 75;
-        const id = wb.addImage({ base64: it.photo, extension: 'jpeg' });
-        ws.addImage(id, { tl: { col: 5.1, row: i + 1.1 }, ext: { width: 90, height: 90 } });
-      }
-    });
-    const tot = ws.addRow({ name: 'Total units', q: items.reduce((s, i) => s + i.qty, 0) });
-    tot.font = { bold: true };
+      const pc = r.getCell('p');
+      if (it.photoUrl) { pc.value = { text: it.photoUrl, hyperlink: it.photoUrl }; pc.font = { color: { argb: 'FF0563C1' }, underline: true }; }
+      else if (it.thumb) pc.value = 'Not uploaded to Drive yet';
+    }
+    ws.autoFilter = { from: 'A1', to: 'H1' };
+    ws.addRow({ name: 'Totals: ' + totalsText(items) }).font = { bold: true };
 
     const buf = await wb.xlsx.writeBuffer();
     const blob = new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    const filename = 'asset-list-' + new Date().toISOString().slice(0, 10) + '.xlsx';
-
-    let dl = null;
-    try { dl = window.claude ? await window.claude.use('downloads') : null; } catch (e) { dl = null; }
-    if (dl) {
-      await dl.save({ filename, data: blob });
-      toast('Excel file saved.');
-    } else {
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob); a.download = filename;
-      document.body.appendChild(a); a.click(); a.remove();
-      toast('Excel file ready.');
-    }
-  } catch (err) {
-    if (err && err.code === 'declined') toast('Download canceled.');
-    else toast('The Excel file couldn’t be created. Try again.');
-  } finally { btn.disabled = !items.length; }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'asset-list-' + new Date().toISOString().slice(0, 10) + '.xlsx';
+    document.body.appendChild(a); a.click(); a.remove();
+    toast('Excel file ready.');
+  } catch (err) { toast('The Excel file couldn’t be created. Try again.'); }
+  finally { btn.disabled = !items.length; }
 }
 
+/* ---------- wiring ---------- */
 $('#cam').onclick = () => $('#fcam').click();
 $('#up').onclick = () => $('#fup').click();
 $('#fcam').onchange = pick; $('#fup').onchange = pick;
@@ -312,10 +601,37 @@ $('#add').onclick = addItem;
 document.querySelectorAll('.chip').forEach(c => { c.onclick = () => setStatus(c.dataset.s); });
 $('#name').addEventListener('keydown', e => { if (e.key === 'Enter') addItem(); });
 $('#export').onclick = exportXlsx;
-$('#clear').onclick = () => {
-  if (confirm('Delete all ' + items.length + ' assets? Download the Excel file first if you need a copy.')) { items = []; persist(); render(); }
+$('#selall').onchange = e => { items.forEach(i => { if (e.target.checked) selected.add(i.id); else selected.delete(i.id); }); render(); };
+$('#bclear').onclick = () => { selected.clear(); render(); };
+$('#bmove').onclick = () => {
+  const list = items.filter(i => selected.has(i.id));
+  if (!list.length) return;
+  const v = $('#bbox').value.trim();
+  if (!v && !confirm('Remove the ' + list.length + ' selected item(s) from their boxes?')) return;
+  moveItems(list, v);
+  selected.clear(); $('#bbox').value = '';
+  toast('Moved ' + list.length + (list.length === 1 ? ' item' : ' items') + (v ? ' to “' + canonBox(v) + '”.' : ' out of their boxes.'));
 };
+$('#clear').onclick = () => {
+  if (confirm('Delete all ' + items.length + ' assets from the list? Photos already in Google Drive stay there.')) { items = []; sync('clear', {}); }
+};
+$('#gcon').onclick = () => connect(false);
+$('#gnew').onclick = () => connect(true);
+$('#gskip').onclick = () => { ls.set('skip', '1'); unlock(); setSync('Saved on this device only', false); };
+$('#gcode').addEventListener('keydown', e => { if (e.key === 'Enter') connect(false); });
+async function copy(t) { try { await navigator.clipboard.writeText(t); toast('Copied.'); } catch (e) { prompt('Copy this code:', t); } }
+$('#ccopy').onclick = () => copy(ls.get('code') || '');
+$('#vcopy').onclick = () => copy(ls.get('vcode') || '');
+$('#vnew').onclick = async () => {
+  try { const j = await api('viewcode', {}); ls.set('vcode', j.viewCode); updateBar(); toast('Viewer code created. Share it with people who should only view.'); }
+  catch (e) { if (e.message !== 'Access code needed') toast(e.message, 9000); }
+};
+$('#cswitch').onclick = () => { if (confirm('Switch to a different access code on this device?')) { items = []; cache(); lockOut(''); } };
+document.addEventListener('visibilitychange', () => { if (!document.hidden) pull(); });
 render();
+if (apiUrl() && ls.get('code')) { unlock(); setSync('Connecting…', false); start(); pull(); }
+else if (!apiUrl() && ls.get('skip')) { unlock(); setSync('Saved on this device only', false); }
+else lockOut('');
 </script>
 </body>
 </html>
